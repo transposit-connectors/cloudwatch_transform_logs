@@ -2,7 +2,7 @@
 This app takes logs from Cloudwatch, transforms them to a desired format, and puts the transformed data into an AWS SQS queue. The data in SQS can be processed in batch and imported into Kinesis Firehose. You can then configure your Kinesis Firehose on AWS to output transformed logs into S3, Redshift, Elasticsearch or Splunk for further analysis. 
 
 ## Test against your own infrastructure
-Step 1: Run `queue_events`, which get logs from Cloudwatch, and queue them on SQS 
+Step 1: Run `queue_events`, which gets logs from Cloudwatch, and queue them on SQS 
 > Parameters  
 > `daysAgo`: Timerange for logs fetching. daysAgo = 1 means only fetch yesterday's log  
 > `filterPattern`: pattern by which you want to filter your logs  
@@ -16,7 +16,7 @@ Step 2: Once you are done queueing log objects in SQS, you can run `insert_to_ki
 > `deliveryStreamName`: Name of the Kinesis Firehose stream   
 > `queueUrl`: full url of the queue. Same as above  
 
-You should run `insert_to_kinesis` with a scheduled task, which will wake up periodically and take jobs off of the SQS queue you defined in Step 1
+You should run `insert_to_kinesis` with a scheduled task, which will wake up periodically and take jobs off of the SQS queue to process
 
 ## What else can you do?
 Once you fork this app, you can expand and customize its functionalities. Some ideas:
