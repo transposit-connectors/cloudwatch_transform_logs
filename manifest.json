@@ -50,6 +50,15 @@
           }, {
             "name": "filterPattern",
             "type": "STRING"
+          }, {
+            "name": "batchSize",
+            "default": {
+              "text": "1000"
+            },
+            "type": "INTEGER"
+          }, {
+            "name": "queueUrl",
+            "type": "STRING"
           }],
           "js": "queue_events.js"
         }
