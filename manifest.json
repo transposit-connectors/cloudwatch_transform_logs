@@ -7,6 +7,9 @@
       }, {
         "name": "transposit/aws_sqs:v1.*.*",
         "alias": "aws_sqs"
+      }, {
+        "name": "transposit/aws_kinesis_firehose:v1.*.*",
+        "alias": "aws_kinesis_firehose"
       }],
       "operations": [{
         "id": "filter_events",
