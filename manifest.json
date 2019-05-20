@@ -4,6 +4,9 @@
       "dependencies": [{
         "name": "transposit/aws_cloudwatch_logs:v2.*.*",
         "alias": "aws_cloudwatch_logs"
+      }, {
+        "name": "transposit/aws_sqs:v1.*.*",
+        "alias": "aws_sqs"
       }],
       "operations": [{
         "id": "filter_events",
