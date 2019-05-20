@@ -32,7 +32,7 @@
 
     console.log(deleteHandle)
     if (result[0].FailedPutCount == 0) {
-        api.log(api.run("this.delete_message", { handle: deleteHandle }))
+        api.log(api.run("aws_sqs.delete_message", { ReceiptHandle: deleteHandle, QueueUrl: params.queueUrl }))
     }
     return result
 }
