@@ -2,8 +2,9 @@
     // get a message off of a SQS queue 
     let data = api.run("aws_sqs.receive_message",
         { QueueUrl: params.queueUrl, MaxNumberOfMessages: 1 })[0].ReceiveMessageResponse.ReceiveMessageResult.Message;
-    
-  	if (!data || !data.ReceiptHandle) {
+
+
+    if (!data || !data.ReceiptHandle) {
         api.log("no data, going back to sleep");
         return;
     }
@@ -24,13 +25,15 @@
     }
 
 
+    // put events to Kinesis firehose stream
+    // you can customize the consumer of Kinesis firehose to be S3. 
     let result = api.run("aws_kinesis_firehose.put_record_batch",
         {
             DeliveryStreamName: params.deliveryStreamName,
             Records: records
         });
 
-    console.log(deleteHandle)
+    console.log("delete message handle = " + deleteHandle)
     if (result[0].FailedPutCount == 0) {
         api.log(api.run("aws_sqs.delete_message", { ReceiptHandle: deleteHandle, QueueUrl: params.queueUrl }))
     }
