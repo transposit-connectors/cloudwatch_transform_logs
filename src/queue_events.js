@@ -20,7 +20,6 @@
             return JSON.parse(e.message.split(" - ")[1]);
         } catch (error) {
             console.log(error.message)
-            return null
         }
     }));
 
