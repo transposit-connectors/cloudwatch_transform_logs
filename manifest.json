@@ -28,9 +28,6 @@
         "function": {
           "parameters": [{
             "name": "deliveryStreamName",
-            "default": {
-              "text": "yoko-sandbox-deliver-user-events-latest"
-            },
             "type": "STRING"
           }, {
             "name": "queueUrl",

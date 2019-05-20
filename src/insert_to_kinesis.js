@@ -1,7 +1,9 @@
 (params) => {
+    // get a message off of a SQS queue 
     let data = api.run("aws_sqs.receive_message",
         { QueueUrl: params.queueUrl, MaxNumberOfMessages: 1 })[0].ReceiveMessageResponse.ReceiveMessageResult.Message;
-    if (!data || !data.ReceiptHandle) {
+    
+  	if (!data || !data.ReceiptHandle) {
         api.log("no data, going back to sleep");
         return;
     }
@@ -18,7 +20,7 @@
         records = JSON.parse(records);
     } catch {
         api.log("Unable to parse, deleting: " + records);
-        return api.run("this.delete_message", { handle: deleteHandle });
+        return api.run("aws_sqs.delete_message", { ReceiptHandle: deleteHandle, QueueUrl: params.queueUrl });
     }
 
 
