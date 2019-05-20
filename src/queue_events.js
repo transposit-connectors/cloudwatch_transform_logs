@@ -22,6 +22,7 @@
             console.log(error.message)
         }
     }));
+  	// END
 
     // put log objects to sqs in batch, and we can later take them from the queue for processing
     for (let i = 0; i < logObjects.length; i += params.batchSize) {
