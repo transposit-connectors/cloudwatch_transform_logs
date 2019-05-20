@@ -23,6 +23,18 @@
         "access": {
           "requireUser": true
         }
+      }, {
+        "id": "insert_to_kinesis",
+        "function": {
+          "parameters": [{
+            "name": "deliveryStreamName",
+            "default": {
+              "text": "yoko-sandbox-deliver-user-events-latest"
+            },
+            "type": "STRING"
+          }],
+          "js": "insert_to_kinesis.js"
+        }
       }],
       "javascriptAPIVersion": "3",
       "source": "src",
