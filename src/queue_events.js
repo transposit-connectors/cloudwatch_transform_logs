@@ -14,7 +14,7 @@
     })
 
 
-    // custom logic for transforming events. Please modify this section so the logic works for your log format
+    // CUSTOM LOGIC: custom logic for transforming events. Please modify this section so the logic works for your log format
     logObjects = _.compact(logObjects.map(e => {
         try {
             return JSON.parse(e.message.split(" - ")[1]);
