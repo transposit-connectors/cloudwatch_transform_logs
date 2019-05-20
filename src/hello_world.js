@@ -1,5 +1,5 @@
 (params) => {
-  var params = {logGroupName: "/aws/ecs/prod/web",
+  const params = {logGroupName: "/aws/ecs/prod/web",
                filterPattern: params.filterPattern,
                startTime: params.startTime,
                endTime: params.endTime}
