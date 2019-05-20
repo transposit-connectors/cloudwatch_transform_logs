@@ -1,5 +1,5 @@
 (params) => {
-
+    const CryptoJS = require("crypto-js");
     const _ = require('underscore.js');
     const moment = require('moment-timezone-with-data.js');
     const startTime = moment().tz('America/Los_Angeles').startOf('day').subtract(parseInt(params.daysAgo), 'days');
@@ -25,7 +25,17 @@
 
     // put log objects to sqs in batch, and we can later take them from the queue for processing
     for (let i = 0; i < logObjects.length; i += params.batchSize) {
-        console.log(put_queue(logObjects.slice(i, i + params.batchSize)));
+        let data = logObjects.slice(i, i + params.batchSize);
+        let records = [];
+        data.forEach(d => {
+            let parsed = CryptoJS.enc.Utf8.parse(JSON.stringify(d) + "\n");
+            records.push({
+                "Data": CryptoJS.enc.Base64.stringify(parsed),
+                "ExplicitHashKey": Math.floor(Math.random() * 1000).toString(),
+                "PartitionKey": Math.floor(Math.random() * 1000).toString()
+            })
+        });
+      	console.log(put_queue(records));
     }
 
 

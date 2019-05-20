@@ -27,6 +27,7 @@
 
     // put events to Kinesis firehose stream https://aws.amazon.com/kinesis/data-firehose/
     // you can customize the consumer of Kinesis firehose to be S3
+return records
     let result = api.run("aws_kinesis_firehose.put_record_batch",
         {
             DeliveryStreamName: params.deliveryStreamName,

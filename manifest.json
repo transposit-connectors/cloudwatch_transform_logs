@@ -56,7 +56,7 @@
           }, {
             "name": "batchSize",
             "default": {
-              "text": "1000"
+              "text": "500"
             },
             "type": "INTEGER"
           }, {
