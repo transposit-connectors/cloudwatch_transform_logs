@@ -4,6 +4,16 @@
       "operations": [{
         "id": "filter_events",
         "function": {
+          "parameters": [{
+            "name": "filterPattern",
+            "type": "STRING"
+          }, {
+            "name": "startTime",
+            "type": "STRING"
+          }, {
+            "name": "endTime",
+            "type": "STRING"
+          }],
           "js": "hello_world.js"
         },
         "access": {
