@@ -27,15 +27,16 @@
 
     // put events to Kinesis firehose stream https://aws.amazon.com/kinesis/data-firehose/
     // you can customize the consumer of Kinesis firehose to be S3
-return records
     let result = api.run("aws_kinesis_firehose.put_record_batch",
         {
             DeliveryStreamName: params.deliveryStreamName,
             Records: records
         });
 	
-    console.log("delete message handle = " + deleteHandle)
+    
+	// delete job from the queue
     if (result[0].FailedPutCount == 0) {
+     	console.log("delete message handle = " + deleteHandle)
         api.log(api.run("aws_sqs.delete_message", { ReceiptHandle: deleteHandle, QueueUrl: params.queueUrl }))
     }
     return result
