@@ -1,7 +1,7 @@
 (params) => {
   //let data = api.run("airtable.get_records", {baseId: params.baseId, table:'event_queue'}, {limit: 2})[0];
   
-  let data = api.run("this.sqs_receive_message")[0].ReceiveMessageResponse.ReceiveMessageResult.Message;
+  let data = api.run("aws_sqs.receive_message", {QueueUrl: params.queueUrl, MaxNumberOfMessages: 1})[0].ReceiveMessageResponse.ReceiveMessageResult.Message;
   if (!data || !data.ReceiptHandle) {
     api.log("no data, going back to sleep");
     return;

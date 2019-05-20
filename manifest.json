@@ -32,6 +32,9 @@
               "text": "yoko-sandbox-deliver-user-events-latest"
             },
             "type": "STRING"
+          }, {
+            "name": "queueUrl",
+            "type": "STRING"
           }],
           "js": "insert_to_kinesis.js"
         }
