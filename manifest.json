@@ -38,6 +38,21 @@
           }],
           "js": "insert_to_kinesis.js"
         }
+      }, {
+        "id": "queue_events",
+        "function": {
+          "parameters": [{
+            "name": "daysAgo",
+            "default": {
+              "text": "1"
+            },
+            "type": "INTEGER"
+          }, {
+            "name": "filterPattern",
+            "type": "STRING"
+          }],
+          "js": "queue_events.js"
+        }
       }],
       "javascriptAPIVersion": "3",
       "source": "src",
