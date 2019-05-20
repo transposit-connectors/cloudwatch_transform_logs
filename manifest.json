@@ -1,6 +1,10 @@
 {
   "v2": {
     "transposit": {
+      "dependencies": [{
+        "name": "transposit/aws_cloudwatch_logs:v2.*.*",
+        "alias": "aws_cloudwatch_logs"
+      }],
       "operations": [{
         "id": "filter_events",
         "function": {
