@@ -13,10 +13,10 @@
             "type": "STRING"
           }, {
             "name": "startTime",
-            "type": "STRING"
+            "type": "NUMBER"
           }, {
             "name": "endTime",
-            "type": "STRING"
+            "type": "NUMBER"
           }],
           "js": "hello_world.js"
         },
