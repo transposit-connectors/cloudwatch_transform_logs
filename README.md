@@ -8,6 +8,7 @@ Step 1: Run `queue_events`, which gets logs from Cloudwatch, and queues them on 
 > `filterPattern`: pattern by which you want to filter your logs  
 > `batchSize`: batch size for putting logs to SQS, default to 500  
 > `queueUrl`: full url of the queue. You can find this in AWS SQS - Queue Detail
+> `logGroupName`: full name of your Cloudwatch log group
 
 You can update the section marked `CUSTOM LOGIC` to put in your own log transformation logic
 
