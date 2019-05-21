@@ -65,6 +65,9 @@
           }, {
             "name": "queueUrl",
             "type": "STRING"
+          }, {
+            "name": "logGroupName",
+            "type": "STRING"
           }],
           "js": "queue_events.js"
         }
