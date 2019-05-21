@@ -8,6 +8,7 @@
     // return all events based on your filterPattern
     // Note: if you have too many events, the operation might time out, and you can break it up to multiple calls
     let logObjects = api.run('this.filter_events', {
+      	logGroupName : params.logGroupName,
         filterPattern: params.filterPattern,
         startTime: startTime.valueOf(),
         endTime: endTime.valueOf()

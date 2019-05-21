@@ -23,6 +23,9 @@
           }, {
             "name": "endTime",
             "type": "NUMBER"
+          }, {
+            "name": "logGroupName",
+            "type": "STRING"
           }],
           "js": "hello_world.js"
         },
@@ -61,6 +64,9 @@
             "type": "INTEGER"
           }, {
             "name": "queueUrl",
+            "type": "STRING"
+          }, {
+            "name": "logGroupName",
             "type": "STRING"
           }],
           "js": "queue_events.js"
