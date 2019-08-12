@@ -81,6 +81,19 @@
             }
           }
         }
+      }, {
+        "ref": "aws_cloudwatch_logs.raw.aws_basic",
+        "overrides": {
+          "swagger": {
+            "awsConfig": {
+              "region": "us-west-2",
+              "service": "logs"
+            },
+            "baseUrl": "https://logs.us-west-2.amazonaws.com",
+            "executionLimits": {
+            }
+          }
+        }
       }],
       "javascriptAPIVersion": "3",
       "source": "src",
