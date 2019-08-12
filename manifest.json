@@ -5,7 +5,7 @@
         "name": "transposit/aws_cloudwatch_logs:v2.*.*",
         "alias": "aws_cloudwatch_logs"
       }, {
-        "name": "transposit/aws_sqs:v1.*.*",
+        "name": "transposit/aws_sqs:v2.*.*",
         "alias": "aws_sqs"
       }, {
         "name": "transposit/aws_kinesis_firehose:v2.*.*",
