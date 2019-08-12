@@ -6,7 +6,8 @@
     const endTime = startTime.clone().add(params.daysAgo, 'days');
 
     // return all events based on your filterPattern
-    // Note: if you have too many events, the operation might time out, and you can break it up to multiple calls
+    // Note: if you have too many events, the operation might time out. 
+    // To solve this, you can break it up to multiple calls with a shorter time interval
     let logObjects = api.run('this.filter_events', {
       	logGroupName : params.logGroupName,
         filterPattern: params.filterPattern,
