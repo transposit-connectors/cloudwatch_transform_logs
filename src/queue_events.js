@@ -43,10 +43,10 @@
 
 
     function put_queue(records) {
-        return api.run('aws_sqs.send_message', {
+        return api.run('aws_sqs.send_message', {$body: {
             MessageBody: JSON.stringify(records),
             QueueUrl: params.queueUrl
-        })
+        }});
     }
 
 }
