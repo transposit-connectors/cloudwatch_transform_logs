@@ -72,6 +72,16 @@
           "js": "queue_events.js"
         }
       }],
+      "dataConnections": [{
+        "ref": "aws_sqs",
+        "overrides": {
+          "aws": {
+            "region": "us-west-2",
+            "executionLimits": {
+            }
+          }
+        }
+      }],
       "javascriptAPIVersion": "3",
       "source": "src",
       "userSettingsDisplay": "GENERATED"
