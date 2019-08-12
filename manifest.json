@@ -2,7 +2,7 @@
   "v2": {
     "transposit": {
       "dependencies": [{
-        "name": "transposit/aws_cloudwatch_logs:v2.*.*",
+        "name": "transposit/aws_cloudwatch_logs:v3.*.*",
         "alias": "aws_cloudwatch_logs"
       }, {
         "name": "transposit/aws_sqs:v2.*.*",
