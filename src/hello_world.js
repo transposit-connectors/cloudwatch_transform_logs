@@ -3,7 +3,7 @@
                filterPattern: params.filterPattern,
                startTime: params.startTime,
                endTime: params.endTime}
-  return api.run("aws_cloudwatch_logs.filter_log_events", parameters)
+  return api.run("aws_cloudwatch_logs.filter_log_events", {$body: parameters})
  
 }
 
