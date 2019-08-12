@@ -94,6 +94,15 @@
             }
           }
         }
+      }, {
+        "ref": "aws_kinesis_firehose",
+        "overrides": {
+          "aws": {
+            "region": "us-west-2",
+            "executionLimits": {
+            }
+          }
+        }
       }],
       "javascriptAPIVersion": "3",
       "source": "src",
