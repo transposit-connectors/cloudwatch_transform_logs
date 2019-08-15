@@ -1,3 +1,7 @@
+/*
+This operation is a great way to try out Athena. It takes historical cloudwatch events and then puts these events to a Kinesis Firehose.
+You could setup your firehose's output location to be a S3 bucket, and then tell Athena to read data from that specific bucket. 
+*/
 (params) => {
   const CryptoJS = require("crypto-js");
   const _ = require("underscore.js");
