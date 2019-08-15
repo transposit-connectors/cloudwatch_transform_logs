@@ -71,6 +71,33 @@
           }],
           "js": "queue_events.js"
         }
+      }, {
+        "id": "quick_queue_events",
+        "function": {
+          "parameters": [{
+            "name": "logGroupName",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "filterPattern",
+            "type": "STRING"
+          }, {
+            "name": "daysAgo",
+            "type": "INTEGER",
+            "required": true
+          }, {
+            "name": "batchSize",
+            "default": {
+              "text": "50"
+            },
+            "type": "INTEGER"
+          }, {
+            "name": "deliveryStreamName",
+            "type": "STRING",
+            "required": true
+          }],
+          "js": "quick_queue_events.js"
+        }
       }],
       "dataConnections": [{
         "ref": "aws_sqs",
