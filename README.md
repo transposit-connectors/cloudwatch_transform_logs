@@ -1,4 +1,5 @@
-# Cloudwatch Logs to Kinesis Firehose using SQS
+# Cloudwatch Logs to Kinesis
+
 This app takes logs from Cloudwatch, transforms them to a desired format, and puts the transformed data into an AWS SQS queue. The data in SQS will then be processed in batch and imported into Kinesis Firehose. You can configure your Kinesis Firehose on AWS to port transformed logs into S3, Redshift, Elasticsearch or Splunk for further analysis. 
 
 ## Test against your own infrastructure
