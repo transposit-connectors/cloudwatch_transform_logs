@@ -143,6 +143,8 @@
       "javascriptAPIVersion": "3",
       "source": "src",
       "userSettingsDisplay": "GENERATED"
-    }
+    },
+    "description": "Transform Cloudwatch logs and send them in batches to Kinesis Firehose using SQS to queue them.",
+    "displayName": "Cloudwatch Logs to Kinesis"
   }
 }
