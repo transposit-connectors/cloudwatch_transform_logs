@@ -19,13 +19,12 @@ You could setup your firehose's output location to be a S3 bucket, and then tell
     logGroupName: params.logGroupName,
     filterPattern: params.filterPattern,
     startTime: startTime.valueOf(),
-    endTime: endTime.valueOf()
+    endTime: endTime.valueOf(),
   });
-
 
   // CUSTOM LOGIC: custom logic for transforming events. Please modify this section so the logic works for your log format
   logObjects = _.compact(
-    logObjects.map(e => {
+    logObjects.map((e) => {
       try {
         return JSON.parse(e.message.split(" - ")[1]);
       } catch (error) {
@@ -39,12 +38,12 @@ You could setup your firehose's output location to be a S3 bucket, and then tell
   for (let i = 0; i < logObjects.length; i += params.batchSize) {
     let data = logObjects.slice(i, i + params.batchSize);
     let records = [];
-    data.forEach(d => {
+    data.forEach((d) => {
       let parsed = CryptoJS.enc.Utf8.parse(JSON.stringify(d) + "\n");
       records.push({
         Data: CryptoJS.enc.Base64.stringify(parsed),
         ExplicitHashKey: Math.floor(Math.random() * 1000).toString(),
-        PartitionKey: Math.floor(Math.random() * 1000).toString()
+        PartitionKey: Math.floor(Math.random() * 1000).toString(),
       });
     });
     console.log(insert_to_kinesis(records));
@@ -54,8 +53,8 @@ You could setup your firehose's output location to be a S3 bucket, and then tell
     return api.run("aws_kinesis_firehose.put_record_batch", {
       $body: {
         DeliveryStreamName: params.deliveryStreamName,
-        Records: records
-      }
+        Records: records,
+      },
     });
   }
-}
+};
