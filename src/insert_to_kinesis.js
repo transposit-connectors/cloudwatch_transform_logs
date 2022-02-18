@@ -1,7 +1,7 @@
 (params) => {
   // get a message off of a SQS queue
   let data = api.run("aws_sqs.receive_message", {
-    $body: { QueueUrl: params.queueUrl, MaxNumberOfMessages: 1 }
+    $body: { QueueUrl: params.queueUrl, MaxNumberOfMessages: 1 },
   })[0].ReceiveMessageResponse.ReceiveMessageResult.Message;
 
   if (!data || !data.ReceiptHandle) {
@@ -24,8 +24,8 @@
     return api.run("aws_sqs.delete_message", {
       $body: {
         ReceiptHandle: deleteHandle,
-        QueueUrl: params.queueUrl
-      }
+        QueueUrl: params.queueUrl,
+      },
     });
   }
 
@@ -34,8 +34,8 @@
   let result = api.run("aws_kinesis_firehose.put_record_batch", {
     $body: {
       DeliveryStreamName: params.deliveryStreamName,
-      Records: records
-    }
+      Records: records,
+    },
   });
 
   // delete job from the queue
@@ -45,13 +45,13 @@
       api.run("aws_sqs.delete_message", {
         $body: {
           ReceiptHandle: deleteHandle,
-          QueueUrl: params.queueUrl
-        }
+          QueueUrl: params.queueUrl,
+        },
       })
     );
   }
   return result;
-}
+};
 
 /*
  * For sample code and reference material, visit

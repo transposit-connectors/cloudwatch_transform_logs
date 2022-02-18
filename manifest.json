@@ -1,145 +1,175 @@
 {
   "v2": {
     "transposit": {
-      "dependencies": [{
-        "name": "transposit/aws_cloudwatch_logs:v3.*.*",
-        "alias": "aws_cloudwatch_logs"
-      }, {
-        "name": "transposit/aws_sqs:v2.*.*",
-        "alias": "aws_sqs"
-      }, {
-        "name": "transposit/aws_kinesis_firehose:v2.*.*",
-        "alias": "aws_kinesis_firehose"
-      }],
-      "operations": [{
-        "id": "filter_events",
-        "function": {
-          "parameters": [{
-            "name": "filterPattern",
-            "type": "STRING"
-          }, {
-            "name": "startTime",
-            "type": "NUMBER"
-          }, {
-            "name": "endTime",
-            "type": "NUMBER"
-          }, {
-            "name": "logGroupName",
-            "type": "STRING"
-          }],
-          "js": "hello_world.js"
+      "dependencies": [
+        {
+          "name": "transposit/aws_cloudwatch_logs:v3.*.*",
+          "alias": "aws_cloudwatch_logs"
         },
-        "access": {
-          "requireUser": true
+        {
+          "name": "transposit/aws_sqs:v2.*.*",
+          "alias": "aws_sqs"
+        },
+        {
+          "name": "transposit/aws_kinesis_firehose:v2.*.*",
+          "alias": "aws_kinesis_firehose"
         }
-      }, {
-        "id": "insert_to_kinesis",
-        "function": {
-          "parameters": [{
-            "name": "deliveryStreamName",
-            "type": "STRING"
-          }, {
-            "name": "queueUrl",
-            "type": "STRING"
-          }],
-          "js": "insert_to_kinesis.js"
-        }
-      }, {
-        "id": "queue_events",
-        "function": {
-          "parameters": [{
-            "name": "daysAgo",
-            "default": {
-              "text": "1"
-            },
-            "type": "INTEGER"
-          }, {
-            "name": "filterPattern",
-            "type": "STRING"
-          }, {
-            "name": "batchSize",
-            "default": {
-              "text": "500"
-            },
-            "type": "INTEGER"
-          }, {
-            "name": "queueUrl",
-            "type": "STRING"
-          }, {
-            "name": "logGroupName",
-            "type": "STRING"
-          }],
-          "js": "queue_events.js"
-        }
-      }, {
-        "id": "quick_queue_events",
-        "function": {
-          "parameters": [{
-            "name": "logGroupName",
-            "type": "STRING",
-            "required": true
-          }, {
-            "name": "filterPattern",
-            "type": "STRING"
-          }, {
-            "name": "daysAgo",
-            "type": "INTEGER",
-            "required": true
-          }, {
-            "name": "batchSize",
-            "default": {
-              "text": "50"
-            },
-            "type": "INTEGER"
-          }, {
-            "name": "deliveryStreamName",
-            "type": "STRING",
-            "required": true
-          }],
-          "js": "quick_queue_events.js"
-        }
-      }],
-      "dataConnections": [{
-        "ref": "aws_sqs",
-        "overrides": {
-          "aws": {
-            "region": "us-west-2",
-            "executionLimits": {
-            }
+      ],
+      "operations": [
+        {
+          "id": "filter_events",
+          "function": {
+            "parameters": [
+              {
+                "name": "filterPattern",
+                "type": "STRING"
+              },
+              {
+                "name": "startTime",
+                "type": "NUMBER"
+              },
+              {
+                "name": "endTime",
+                "type": "NUMBER"
+              },
+              {
+                "name": "logGroupName",
+                "type": "STRING"
+              }
+            ],
+            "js": "hello_world.js"
+          },
+          "access": {
+            "requireUser": true
+          }
+        },
+        {
+          "id": "insert_to_kinesis",
+          "function": {
+            "parameters": [
+              {
+                "name": "deliveryStreamName",
+                "type": "STRING"
+              },
+              {
+                "name": "queueUrl",
+                "type": "STRING"
+              }
+            ],
+            "js": "insert_to_kinesis.js"
+          }
+        },
+        {
+          "id": "queue_events",
+          "function": {
+            "parameters": [
+              {
+                "name": "daysAgo",
+                "default": {
+                  "text": "1"
+                },
+                "type": "INTEGER"
+              },
+              {
+                "name": "filterPattern",
+                "type": "STRING"
+              },
+              {
+                "name": "batchSize",
+                "default": {
+                  "text": "500"
+                },
+                "type": "INTEGER"
+              },
+              {
+                "name": "queueUrl",
+                "type": "STRING"
+              },
+              {
+                "name": "logGroupName",
+                "type": "STRING"
+              }
+            ],
+            "js": "queue_events.js"
+          }
+        },
+        {
+          "id": "quick_queue_events",
+          "function": {
+            "parameters": [
+              {
+                "name": "logGroupName",
+                "type": "STRING",
+                "required": true
+              },
+              {
+                "name": "filterPattern",
+                "type": "STRING"
+              },
+              {
+                "name": "daysAgo",
+                "type": "INTEGER",
+                "required": true
+              },
+              {
+                "name": "batchSize",
+                "default": {
+                  "text": "50"
+                },
+                "type": "INTEGER"
+              },
+              {
+                "name": "deliveryStreamName",
+                "type": "STRING",
+                "required": true
+              }
+            ],
+            "js": "quick_queue_events.js"
           }
         }
-      }, {
-        "ref": "aws_cloudwatch_logs.raw.aws_basic",
-        "overrides": {
-          "swagger": {
-            "awsConfig": {
+      ],
+      "dataConnections": [
+        {
+          "ref": "aws_sqs",
+          "overrides": {
+            "aws": {
               "region": "us-west-2",
-              "service": "logs"
-            },
-            "baseUrl": "https://logs.us-west-2.amazonaws.com",
-            "executionLimits": {
+              "executionLimits": {}
+            }
+          }
+        },
+        {
+          "ref": "aws_cloudwatch_logs.raw.aws_basic",
+          "overrides": {
+            "swagger": {
+              "awsConfig": {
+                "region": "us-west-2",
+                "service": "logs"
+              },
+              "baseUrl": "https://logs.us-west-2.amazonaws.com",
+              "executionLimits": {}
+            }
+          }
+        },
+        {
+          "ref": "aws_kinesis_firehose",
+          "overrides": {
+            "aws": {
+              "region": "us-west-2",
+              "executionLimits": {}
+            }
+          }
+        },
+        {
+          "ref": "aws_cloudwatch_logs",
+          "overrides": {
+            "aws": {
+              "region": "us-west-2",
+              "executionLimits": {}
             }
           }
         }
-      }, {
-        "ref": "aws_kinesis_firehose",
-        "overrides": {
-          "aws": {
-            "region": "us-west-2",
-            "executionLimits": {
-            }
-          }
-        }
-      }, {
-        "ref": "aws_cloudwatch_logs",
-        "overrides": {
-          "aws": {
-            "region": "us-west-2",
-            "executionLimits": {
-            }
-          }
-        }
-      }],
+      ],
       "javascriptAPIVersion": "3",
       "source": "src",
       "userSettingsDisplay": "GENERATED"
